@@ -2,20 +2,63 @@ def main():
     num1 = float(input("Digite o número 1: "))
     num2 = float(input("Digite o número 2: "))
     operacao = input("Qual a operação que você deseja realizar? ").lower()
-    calculadora(operacao, num1, num2)
+    
+    resultado = calculadora(operacao, num1, num2)
+    
+    if resultado is not None:
+     print(f"Resultado: {resultado}")
+     classificar(resultado)
+    
+    else:
+        print("Não foi possível calcular")
 
 
 def calculadora(operacao, num1, num2):
+    
     if operacao == "soma":
-        print(num1 + num2)
+        return num1+num2
+    
     elif operacao == "subtração":
-        print(num1-num2)
+         return num1-num2
+    
     elif operacao == "multiplicação":
-        print(num1*num2)
+         return num1*num2
+    
     elif operacao == "divisão":
-        print(num1/num2)
+         if num2 == 0:
+             print("Erro: divisão por zero")
+             return None
+         
+         return num1/num2
+       
     else:
-        print("Opção inválida")       
+        print("Opção inválida")  
+        return None     
+
+
+def classificar(resultado):
+    
+    if resultado.is_integer():
+        if int(resultado) % 2 == 0:
+            print("É par")
+        else:
+            print("É ímpar")
+    else:
+        print("Não é inteiro, então não pode ser par ou ímpar")
+    
+    if resultado > 0:
+        print("É positivo")
+    
+    elif resultado < 0:
+        print("É negativo")
+
+    else: 
+        print("É zero")
+
+    if resultado.is_integer():
+        print("É inteiro")
+    else:
+        print("É decimal")
 
 
 main()
